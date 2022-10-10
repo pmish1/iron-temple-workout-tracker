@@ -1,0 +1,37 @@
+<%- include('./partials/head.ejs') %>
+
+
+<h1>workout tracker</h1>
+
+<a class="linkToShow" href="/workout-tracker/new">Add workout</a>
+
+<!-- <main class="app">
+
+<table bgcolor="black">
+    <tr bgcolor="grey">
+        <th>Workout 1</th>
+        <th>Workout 2</th>
+        <th>Workout 3</th>
+        <th>Workout 4</th>
+    </tr>
+    <tr class="secondRow" bgcolor="white">
+        <th></th>
+        <th>completed</th>
+        <th>not completed</th>
+        <th>completed</th>
+    </tr>
+</table> -->
+
+
+<% for(let i = 0; i < workouts.length; i++) { %>
+    <li><a href="/workout-tracker/<%= workouts[i]._id %>"><%= workouts[i].name %></a></li>
+    <a href="workout-tracker/<%= workouts[i]._id %>/delete">DELETE</a>
+<% } %>
+
+</main>
+
+
+
+
+</body>
+</html>
