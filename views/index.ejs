@@ -15,6 +15,9 @@
 
 </form>
 
+<% if (messages.success) { %>
+    <p><%= messages.success %> </p>
+    <% } %>
 
 
 <% for(let i = 0; i < workouts.length; i++) { %>

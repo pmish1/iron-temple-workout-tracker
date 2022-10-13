@@ -8,7 +8,10 @@
 
 <br/>
 
-<a href="/workout-tracker">Finish workout</a>
+<form action="/workout-tracker/<%= workoutID %>/currentPost" method="post">
+  <input type="submit" value="Finish workout">
+</form>
+
 
 <h2>Exercises completed:</h2>
 

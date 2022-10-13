@@ -39,6 +39,8 @@ app.use(
     store: sessionWorkouts
   })
 )
+app.use(flash())
+
 //initialising the passport middleware, hooking up to the express app, that's why it using app.use
 app.use(passport.initialize())
 app.use(passport.session())
@@ -48,13 +50,14 @@ passport.use(User.createStrategy())
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+app.get('/', (req, res) => {
+    res.render('home.ejs')
+})
+
 
 app.use(authController)
 app.use(workoutsController)
 
-app.get('/', (req, res) => {
-    res.render('home.ejs')
-})
 
 
 mongoose.connect(dbURL, () => {
