@@ -13,7 +13,9 @@ const flash = require('express-flash')
 
 const Workouts = require('./models/workouts')
 const Exercises = require('./models/exercises')
+const User = require('./models/users')
 const workoutsController = require('./controllers/workouts')
+const authController = require('./controllers/auth')
 
 
 const app = express()
@@ -37,11 +39,22 @@ app.use(
     store: sessionWorkouts
   })
 )
+//initialising the passport middleware, hooking up to the express app, that's why it using app.use
+app.use(passport.initialize())
+app.use(passport.session())
+//configuring passport itself, telling it what to do and how to verfiy it's users
+passport.use(User.createStrategy()) 
+//these teach passport how to work with the user model. Model name should be used
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 
-
-
+app.use(authController)
 app.use(workoutsController)
+
+app.get('/', (req, res) => {
+    res.render('home.ejs')
+})
 
 
 mongoose.connect(dbURL, () => {
