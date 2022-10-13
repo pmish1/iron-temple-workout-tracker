@@ -2,6 +2,9 @@
 
 <h1>Register</h1>
 
+<!-- display flash error message if user already registered -->
+<%- include('./partials/flash.ejs') %>
+
 <form method="post" action="/register">
 
     <label for="username">Username</label>

@@ -75,10 +75,6 @@ router.post('/workout-tracker/:idFromNewExercises/exercisePost', async (req, res
 })
 
 
-
-
-
-
 //DELETE----------------------------------------
 router.get('/workout-tracker/:id/delete', async (req, res) => {
     const ID = req.params.id
@@ -115,38 +111,3 @@ module.exports = router
 
 
 
-//NEW-------------------------------------------
-// router.get('/workout-tracker/new', async (req, res) => {
-
-//     const createWorkout = await Workouts.create(req.body)  //object doesn't have the name data inside it
-//     console.log('NEW WORKOUT MODEL', createWorkout)
-//     const createWorkoutID = new mongoose.Types.ObjectId(createWorkout)
-//     console.log('NEW WORKOUT ID', createWorkoutID)
-
-   
-//     res.render('new.ejs', {
-//         createWorkoutID: createWorkoutID
-//     })
-// })
-// router.get('/workout-tracker/:idfromNewExercises/new', async (req, res) => {
-//     const createWorkoutID = req.params.idfromNewExercises
-//     const specificWorkout = await Workouts.find(
-//         {_id: createWorkoutID}
-//     )
-//     req.render('new.ejs', {
-//         specificWorkout: specificWorkout,
-//         createWorkoutID: createWorkoutID
-//     })
-// })
-// router.post('/workout-tracker/:idFromNew/post', async (req, res) => {
-//     const ID = req.params.idFromNew
-//     console.log('ID', ID)
-//     console.log(req.body.name)
-//     //updating the name of the workout here, but not to the one with the exercise data
-//     await Workouts.findByIdAndUpdate(  
-//         ID,
-//         {name: req.body.name},
-//         {new: true}
-//     )
-//     res.redirect('/workout-tracker')
-// })

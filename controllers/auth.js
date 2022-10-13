@@ -18,6 +18,7 @@ router.get('/login', (req, res) => {
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',   //if password wrong, redirect to this page
     successRedirect: '/workout-tracker', //otherwise redirect them to this page
+    failureFlash: true   //dont have to do req.flash here because passport will handle it
 }))
 
 //LOGOUT-----------------------------
@@ -33,14 +34,20 @@ router.get('/register', (req, res) => {
     res.render('register.ejs')
 })
 router.post('/register', async (req, res) => {
-    const {username, password} = req.body
-    const user = await User.register(
-        new User({username: username}),
-        password
-    )
-    req.login(user, () => {
-        res.redirect('/workout-tracker')
-    })
+    //this will run if the username and password are already registered 
+    try {
+        const {username, password} = req.body
+        const user = await User.register(
+            new User({username: username}),
+            password
+        )
+        req.login(user, () => {
+            res.redirect('/workout-tracker')
+        })
+    } catch (error) {   //this runs only if an error is thrown
+        req.flash('error', error.message)   //error message from passport-local-mongoose
+        res.redirect('/register')
+    }
 })
 
 module.exports = router

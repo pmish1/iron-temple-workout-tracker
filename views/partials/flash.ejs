@@ -1,0 +1,7 @@
+<!-- grabs all the keys from the messages object. eg: 'success', 'error' etc -->
+<% Object.keys(messages).forEach((type) => { %>
+    <!-- display all the values associated with the key from the object -->
+    <% messages[type].forEach((msg) => { %>
+        <div class="<%= type %>"><%= msg %></div>
+    <% }) %>
+<% }) %>
