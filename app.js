@@ -15,6 +15,7 @@ const Workouts = require('./models/workouts')
 const Exercises = require('./models/exercises')
 const workoutsController = require('./controllers/workouts')
 
+
 const app = express()
 const PORT = process.env.PORT
 const dbURL = process.env.MONGODB_URL
@@ -36,6 +37,7 @@ app.use(
     store: sessionWorkouts
   })
 )
+
 
 
 

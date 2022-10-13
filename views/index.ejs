@@ -3,29 +3,23 @@
 
 <h1>workout tracker</h1>
 
-<a class="linkToShow" href="/workout-tracker/new">Add workout</a>
 
-<!-- <main class="app">
+<!-- to go to the current workout page -->
+<form action="/workout-tracker/createWorkout" method="POST">
+   
+    <label for="workoutName">Name:</label>
+    <input type="text" name="name" id="workoutName"/>
 
-<table bgcolor="black">
-    <tr bgcolor="grey">
-        <th>Workout 1</th>
-        <th>Workout 2</th>
-        <th>Workout 3</th>
-        <th>Workout 4</th>
-    </tr>
-    <tr class="secondRow" bgcolor="white">
-        <th></th>
-        <th>completed</th>
-        <th>not completed</th>
-        <th>completed</th>
-    </tr>
-</table> -->
+    <input type="submit" value="START WORKOUT"/>
+
+
+</form>
+
 
 
 <% for(let i = 0; i < workouts.length; i++) { %>
-    <li><a href="/workout-tracker/<%= workouts[i]._id %>"><%= workouts[i].name %></a></li>
-    <a href="workout-tracker/<%= workouts[i]._id %>/delete">DELETE</a>
+    <li><a href="/workout-tracker/<%= workouts[i]._id %>/view"><%= workouts[i].name %></a></li>
+    <a href="/workout-tracker/<%= workouts[i]._id %>/delete">DELETE</a>
 <% } %>
 
 </main>

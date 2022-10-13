@@ -4,12 +4,9 @@ const Exercises = require('./exercises')
 
 
 const workoutSchema = new mongoose.Schema({
-    name: String,
-    //exercises: { type: [mongoose.Schema.Types.ObjectId], ref: 'Exercises' },
-    exercises: {type: String, require: true}
-    },
-    //{timestamps: true}
-)
+    name: {type: String, required: true}, 
+    exercises: [{type: Object}]
+})
 
 const Workouts = mongoose.model('Workouts', workoutSchema)
 

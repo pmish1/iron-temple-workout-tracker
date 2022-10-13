@@ -1,0 +1,30 @@
+<%- include('./partials/head.ejs') %>
+
+<h1>Add exercise</h1>
+
+
+<form class='new-exercise' action="/workout-tracker/<%= ID %>/exercisePost" method="POST">
+
+    <label for="exercise">Exercise name:</label>
+    <input type="text" name="exerciseName" id="exercise"/>
+
+    <br/>
+
+    <label for="reps">Reps:</label>
+    <input type="Number" name="reps" id="reps" class="add-reps">
+
+    <br/>
+
+    <label for="weight">weight:</label>
+    <input type="Number" name="weight" id="weight" class="add-weight">
+
+    <br/>
+    
+    
+
+    <input type="submit" value="finsh exercise" class='finish-exercise'/>
+
+</form>
+
+
+<input type="submit" value="add set" class="add-set">

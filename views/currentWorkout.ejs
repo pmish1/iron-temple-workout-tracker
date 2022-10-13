@@ -1,0 +1,19 @@
+<%- include('./partials/head.ejs') %>
+
+<h1>Current Workout</h1>
+
+
+
+<a href="/workout-tracker/<%= workoutID %>/new-exercise">ADD EXERCISE</a>
+
+<br/>
+
+<a href="/workout-tracker">Finish workout</a>
+
+<h2>Exercises completed:</h2>
+
+
+<!-- completed exercises -->
+<% workout.exercises.reverse().forEach((exercise) => { %>
+    <p><%= exercise.exerciseName %></p>
+  <% }) %>
