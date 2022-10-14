@@ -25,6 +25,5 @@ const addRepsWeight = () => {
     formsTag.insertBefore(addReps, addWeight)    
 
 }
-
-
 addSet.addEventListener('click', addRepsWeight)
+

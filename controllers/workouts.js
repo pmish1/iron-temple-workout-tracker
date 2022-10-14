@@ -74,6 +74,37 @@ router.post('/workout-tracker/:idFromNewExercises/exercisePost', async (req, res
     res.redirect(`/workout-tracker/${ID}`)  //redirects to CURRENT WORKOUT ROUTE
 })
 
+//EDIT--------------------------------------------
+router.get('/workout-tracker/:idFromShow/edit', async (req, res) => {
+    console.log(req.params.idFromShow)
+    const exercise = await Exercises.findById(req.params.idFromShow)
+    console.log(exercise)
+    res.render('edit.ejs', {
+        exercise: exercise
+    })
+})
+router.post('/workout-tracker/:idFromEdit/editPost', async (req, res) => {
+    const ID = req.params.idFromNewExercises
+    let sets = []
+    for (let i = 0; i < req.body.reps.length; i++) {
+        let obj = {}
+        obj.reps = req.body.reps[i]
+        obj.weight = req.body.weight[i]
+        sets.push(obj)
+    }
+    const editExercise = {
+        exerciseName: req.body.exerciseName,
+        sets: sets
+    }
+    const updateExercise = await Exercises.findByIdAndUpdate(
+        req.params.idFromEdit,
+        editExercise,
+        {new: true}
+    )
+    console.log(updateExercise)
+    res.redirect('/workout-tracker')
+})
+
 
 //DELETE----------------------------------------
 router.get('/workout-tracker/:id/delete', async (req, res) => {
@@ -91,9 +122,11 @@ router.delete('/workout-tracker/:idFromDelete', async (req, res) => {
 
 //SHOW COMPLETED WORKOUT------------------------------------------
 router.get('/workout-tracker/:idFromIndex/view', async (req, res) => {
-    const workout = await Workouts.findById(req.params.idFromIndex)
+    const workout = await Workouts.findById(req.params.idFromIndex).populate('exercises')
+    console.log(workout)
     res.render('show.ejs', {
-        workout: workout
+        workout: workout,
+        workoutID: req.params.idFromIndex
     })
 })
 

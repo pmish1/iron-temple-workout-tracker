@@ -1,13 +1,19 @@
 <%- include('./partials/head.ejs') %>
 
 
-<h2>review workout</h2>
-
-<h2><%= workout.name %></h2>
+<h2>Review <%= workout.name %></h2>
 
 <% for(let i = 0; i < workout.exercises.length; i++) { %>
-    <h2><%= workout.exercises[i].exerciseName %></h2>
-    <p><%= workout.exercises[i].exerciseDescription %></p>
+    <h2>
+        <%= workout.exercises[i].exerciseName %>
+        <a href="/workout-tracker/<%= workout.exercises[i]._id %>/edit">Edit</a>
+    </h2>
+    <% for(let e = 0; e < workout.exercises[i].sets.length; e++) { %>
+        <ul> <u>Set <%= e+1 %></u>
+            <li>Reps: <%= workout.exercises[i].sets[e].reps%></li>
+            <li>Weight: <%= workout.exercises[i].sets[e].weight%>KG</li>
+        </ul>
+    <% } %>
 <% } %>
 
 
