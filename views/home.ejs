@@ -1,8 +1,29 @@
 <%- include('./partials/head.ejs') %>
 
-<a href="/workout-tracker">To workouts</a>
 
-<h1>Homepage</h1>
+<div class="homePage">
 
-<p><a href="/login">Login</a></p>
-<p><a href="/register">Register</a></p>
+    <a class='to-workouts btn btn-dark' href="/workout-tracker">
+        To workouts
+    </a>
+
+    
+    <div>
+        <h1 class="appName" id="home-title">IRON TEMPLE WORKOUT TRACKER</h1>
+        <p><a class='home-anchor btn btn-dark' href="/login">LOGIN</a></p>
+        <p><a class='home-anchor btn btn-dark' href="/register">REGISTER</a></p>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<%- include('./partials/foot.ejs') %>

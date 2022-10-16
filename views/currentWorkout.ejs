@@ -1,22 +1,49 @@
 <%- include('./partials/head.ejs') %>
 
-<h1>Current Workout</h1>
+
+<div class="container">
+
+
+  <h1 class="current_workout_title">Current Workout</h1>
 
 
 
-<a href="/workout-tracker/<%= workoutID %>/new-exercise">ADD EXERCISE</a>
+  <a class="add_exercise_current_button btn btn-dark" href="/workout-tracker/<%= workoutID %>/new-exercise" role="button">ADD EXERCISE</a>
+  
+  
+  <form class="finish_workout_button" action="/workout-tracker/<%= workoutID %>/currentPost" method="post">
+    <input class="btn btn-success" type="submit" value="Finish workout">
+  </form>
+  
+  
+  <h2 class="completed_exercises_title">Exercises completed:</h2>
+  
+  <table class="completed_exercises table table-dark table-striped">
+    <tbody>
+      <% workout.exercises.reverse().forEach((exercise) => { %>
+            <tr>
+                <th>
+                  <p><%= exercise.exerciseName %></p>
+                </th>
+            </tr>
+            <% }) %>
+    
+    </tbody>
 
-<br/>
 
-<form action="/workout-tracker/<%= workoutID %>/currentPost" method="post">
-  <input type="submit" value="Finish workout">
-</form>
+</table>
+
+  
+  <!-- completed exercises -->
+  
+      
+    
+  
+  
+</div>
 
 
-<h2>Exercises completed:</h2>
 
 
-<!-- completed exercises -->
-<% workout.exercises.reverse().forEach((exercise) => { %>
-    <p><%= exercise.exerciseName %></p>
-  <% }) %>
+
+  <%- include('./partials/foot.ejs') %>

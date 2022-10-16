@@ -1,37 +1,49 @@
 <%- include('./partials/head.ejs') %>
 
+<div class="container">
+
+    <h1 class="index_title">IRON TEMPLE WORKOUT TRACKER</h1>
+    <!-- to go to the current workout page -->
+    <form action="/workout-tracker/createWorkout" method="POST" class="name_workout">
+       <div class="workoutName_input form-floating"> 
+           <input class='form-control form-control-lg' type="text" name="name" id="workoutName" placeholder='Name workout to start' />
+           <label for="workoutName" class="form-label">Name workout to start</label>
+       </div>
+        
+    
+        <input type="submit" value="START WORKOUT" class='name_submit'/>
+    
+    
+    </form>
+    
+    <!-- displays flash message when workout is completed -->
+    <%- include('./partials/flash.ejs') %>
+    
+    <table class="completed_workouts table table-dark table-striped">
+        <tbody>
+            
+            <!-- displays completed workouts -->
+            <% for(let i = 0; i < workouts.length; i++) { %>
+                <tr>
+                    <th>
+                        <a class='btn btn-dark' href="/workout-tracker/<%= workouts[i]._id %>/view"><%= workouts[i].name %>    </a>
+                        <a class='delete_btn btn btn-info' href="/workout-tracker/<%= workouts[i]._id %>/delete">DELETE</a>
+                    </th>
+                </tr>
+            <% } %>
+        
+        </tbody>
+ 
+    
+    </table>
 
 
 
-<h1>workout tracker</h1>
-
-
-<!-- to go to the current workout page -->
-<form action="/workout-tracker/createWorkout" method="POST">
-   
-    <label for="workoutName">Name:</label>
-    <input type="text" name="name" id="workoutName"/>
-
-    <input type="submit" value="START WORKOUT"/>
-
-
-</form>
-
-
-<!-- displays flash message when workout is completed -->
-<%- include('./partials/flash.ejs') %>
-
-
-
-<% for(let i = 0; i < workouts.length; i++) { %>
-    <li><a href="/workout-tracker/<%= workouts[i]._id %>/view"><%= workouts[i].name %></a></li>
-    <a href="/workout-tracker/<%= workouts[i]._id %>/delete">DELETE</a>
-<% } %>
-
-</main>
+</div>
 
 
 
 
-</body>
-</html>
+
+<%- include('./partials/foot.ejs') %>
+

@@ -1,7 +1,19 @@
 <%- include('./partials/head.ejs') %>
 
-<h1>delete page</h1>
 
-<form action="/workout-tracker/<%= workoutID %>?_method=DELETE" method="post">
-    <input type="submit" value="Delete" /> 
-</form>
+<div class="container">
+
+    <h1 class="delete_title">Confirm</h1>
+
+    <form class="delete_button" action="/workout-tracker/<%= workoutID %>?_method=DELETE" method="post">
+        <input class='btn btn-dark' type="submit" value="Delete" /> 
+    </form>
+
+</div>
+
+
+
+
+
+
+<%- include('./partials/foot.ejs') %>

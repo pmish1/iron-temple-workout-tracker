@@ -1,17 +1,41 @@
 <%- include('./partials/head.ejs') %>
 
-<h1>Register</h1>
+<h1>REGISTER</h1>
 
 <!-- display flash error message if user already registered -->
 <%- include('./partials/flash.ejs') %>
 
-<form method="post" action="/register">
+<form method="post" action="/register" class="register-form">
 
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" required />
+  <div class="form-floating">
+    <input type="text" name="username" id="username" class='form-control' placeholder="Username" required />
+    <label for="username" class="form-label">Username</label>
+  </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required />
 
-    <input type="submit" value="Register" />
-  </form>
+  <div class="form-floating">
+    <input type="password" name="password" id="password" class='form-control' placeholder='Password' required />
+    <label for="password" class="form-label">Password</label>
+  </div>
+
+    
+
+    <input type="submit" value="Register" class='btn btn-info'/>
+</form>
+
+  <%- include('./partials/foot.ejs') %>
+
+
+  <!-- <form method="POST" action="/login" class="login-form">
+    <div class="form-floating">
+        <input type="text" name="username" id="username"  placeholder='Username' class='form-control' required />
+        <label for="username" class="form-label">Username</label>
+    </div>
+
+    <div class="form-floating">
+        <input type="password" name="password" id="password" placeholder='Password' class='form-control' required />
+        <label for="password" class="form-label">Password</label>
+    </div>
+
+    <input type="submit" value="Onwards to fitness glory" class='btn btn-info'/>
+</form> -->

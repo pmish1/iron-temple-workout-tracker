@@ -1,32 +1,40 @@
 <%- include('./partials/head.ejs') %>
 
+<div class="container">
 
-<h1>Edit <%= exercise.exerciseName %></h1>
+    <h1 class="edit_exercise_title">Edit <%= exercise.exerciseName %></h1>
 
-<form class='new-exercise' action="/workout-tracker/<%= exercise._id %>/editPost" method="POST">
-
-    <label for="exercise">Exercise name:</label>
-    <input type="text" name="exerciseName" id="exercise" value='<%= exercise.exerciseName %>' />
-
-    <br/>
-
-   <% exercise.sets.forEach((set) => { %>
+    <form class='new_exercise' action="/workout-tracker/<%= exercise._id %>/editPost" method="POST">
     
-    <input type="Number" name="reps" class="add-reps" value="<%= set.reps%>">
-
-    <br/>
-
-
-    <input type="Number" name="weight"  class="add-weight"value="<%= set.weight%>">
-
-    <br/>
+        <label for="exercise">Exercise name:</label>
+        <input type="text" name="exerciseName" id="exercise" value='<%= exercise.exerciseName %>' />
     
-    <% }) %>
+        <br/>
+    
+       <% exercise.sets.forEach((set) => { %>
+        
+        <input type="Number" name="reps" class="add_reps" placeholder="<%= set.reps%> reps">
+    
+        <br/>
+    
+    
+        <input type="Number" name="weight"  class="add_weight" placeholder="<%= set.weight%> kg">
+    
+        <br/>
+        
+        <% }) %>
+    
+    
+        <input type="submit" value="finish edit" class='finish_exercise btn btn-success'/>
+    
+    </form>
+    
+    
+    <button class="add_set btn btn-dark">add set</button>
 
 
-    <input type="submit" value="finish edit" class='finish-exercise'/>
-
-</form>
+</div>
 
 
-<button class="add-set">add set</button>
+
+<%- include('./partials/foot.ejs') %>

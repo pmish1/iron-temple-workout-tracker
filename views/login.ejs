@@ -1,18 +1,27 @@
 <%- include('./partials/head.ejs') %>
 
-<h1>Login</h1>
+<h1>LOGIN</h1>
 
 <!-- displays error message if username or passwor is incorrect -->
 <%- include('./partials/flash.ejs') %>
 
 
 
-<form method="POST" action="/login">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" required />
+<form method="POST" action="/login" class="login-form">
+    <div class="form-floating">
+        <input type="text" name="username" id="username"  placeholder='Username' class='form-control' required />
+        <label for="username" class="form-label">Username</label>
+    </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required />
+    <div class="form-floating">
+        <input type="password" name="password" id="password" placeholder='Password' class='form-control' required />
+        <label for="password" class="form-label">Password</label>
+    </div>
 
-    <input type="submit" value="Login" />
+    <input type="submit" value="Big muscles await..." class='btn btn-info'/>
 </form>
+
+<%- include('./partials/foot.ejs') %>
+
+
+

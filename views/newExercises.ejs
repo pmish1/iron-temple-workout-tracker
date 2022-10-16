@@ -1,29 +1,39 @@
 <%- include('./partials/head.ejs') %>
 
-<h1>Add exercise</h1>
+
+<div class="container">
+
+    <h1 class="add_exercises_title">ADD EXERCISE</h1>
 
 
-<form class='new-exercise' action="/workout-tracker/<%= ID %>/exercisePost" method="POST">
-
-    <label for="exercise">Exercise name:</label>
-    <input type="text" name="exerciseName" id="exercise"/>
-
-    <br/>
-
-   
-    <input type="Number" name="reps" class="add-reps" placeholder="reps">
-
-    <br/>
-
-
-    <input type="Number" name="weight"  class="add-weight" placeholder="weight">
-
-    <br/>
+    <form class='new_exercise' action="/workout-tracker/<%= ID %>/exercisePost" method="POST">
     
+        <div class="exercise_name form-floating">
+            <input type="text" name="exerciseName" id="exercise" placeholder='Exercise name' class='exercise_name_input form-control' required />
+            <label for="exercise" class="form-label">Exercise name</label>
+        </div>
+     
+    
+        
+    
+       
+        <input type="Number" name="reps" class="add_reps" placeholder="Set 1: reps">
+    
+           
+    
+        <input type="Number" name="weight"  class="add_weight" placeholder="Set 1: weight">
+    
+        
+        
+    
+        <input type="submit" value="finish exercise" class='finish_exercise btn btn-success'/>
+    
+    </form>
+    
+    
+    <button class="add_set btn btn-dark">ADD SET</button>
+    
+</div>
 
-    <input type="submit" value="finsh exercise" class='finish-exercise'/>
 
-</form>
-
-
-<button class="add-set">add set</button>
+<%- include('./partials/foot.ejs') %>

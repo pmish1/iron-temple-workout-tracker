@@ -1,19 +1,37 @@
 <%- include('./partials/head.ejs') %>
 
 
-<h2>Review <%= workout.name %></h2>
 
-<% for(let i = 0; i < workout.exercises.length; i++) { %>
-    <h2>
-        <%= workout.exercises[i].exerciseName %>
-        <a href="/workout-tracker/<%= workout.exercises[i]._id %>/edit">Edit</a>
-    </h2>
-    <% for(let e = 0; e < workout.exercises[i].sets.length; e++) { %>
-        <ul> <u>Set <%= e+1 %></u>
-            <li>Reps: <%= workout.exercises[i].sets[e].reps%></li>
-            <li>Weight: <%= workout.exercises[i].sets[e].weight%>KG</li>
-        </ul>
-    <% } %>
-<% } %>
+    <h1 class="show_page_title">Review <%= workout.name %></h1>
+
+   
 
 
+
+
+
+
+    <div class="show_page_list">
+
+        <% for(let i = 0; i < workout.exercises.length; i++) { %>
+            <h2>
+                <%= workout.exercises[i].exerciseName %>
+                <a class="btn btn-warning" href="/workout-tracker/<%= workout.exercises[i]._id %>/edit">Edit</a>
+            </h2>
+            <% for(let e = 0; e < workout.exercises[i].sets.length; e++) { %>
+                <ul class="exercises_list_show"> <u>Set <%= e+1 %></u>
+                    <li>Reps: <%= workout.exercises[i].sets[e].reps%></li>
+                    <li>Weight: <%= workout.exercises[i].sets[e].weight%>KG</li>
+                </ul>
+            <% } %>
+        <% } %>
+        
+    </div>
+
+
+
+
+
+
+
+<%- include('./partials/foot.ejs') %>

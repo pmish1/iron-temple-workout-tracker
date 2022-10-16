@@ -66,11 +66,13 @@ router.post('/workout-tracker/:idFromNewExercises/exercisePost', async (req, res
         sets: sets
     }
     const insertExercise = await Exercises.create(newExercise)
+    console.log('UPDATED EXERCISE MODEL', insertExercise)
     const workoutsUpdated = await Workouts.findByIdAndUpdate( 
         ID, 
         {$push: {exercises: insertExercise}}, 
         {new: true}
     )
+    console.log(workoutsUpdated)
     res.redirect(`/workout-tracker/${ID}`)  //redirects to CURRENT WORKOUT ROUTE
 })
 
